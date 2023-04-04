@@ -26,46 +26,7 @@ public:
         aristas[v][u] = 1;
     }
 
-    void BFS(int nodo_inicio, int distancias[], int padres[]) {
-        for (int i = 0; i < nodos; i++) {
-            distancias[i] = -1; // Inicializa las distancias como -1 (no visitado)
-            padres[i] = -1; // Inicializa los padres como -1 (no asignado)
-        }
-        queue<int> cola;
-        cola.push(nodo_inicio);
-        distancias[nodo_inicio] = 0;
-
-        while (!cola.empty()) {
-            int nodo_actual = cola.front();
-            cola.pop();
-
-            for (int i = 0; i < nodos; i++) {
-                if (aristas[nodo_actual][i] && distancias[i] == -1) {
-                    cola.push(i);
-                    distancias[i] = distancias[nodo_actual] + 1;
-                    padres[i] = nodo_actual;
-                }
-            }
-        }
-    }
-
-    void imprimirCamino(int nodo_a, int nodo_b, string ciudades[]) {
-        int distancias[max_nodos];
-        int padres[max_nodos];
-        BFS(nodo_a, distancias, padres);
-        int nodo_actual = nodo_b;
-
-        cout << "Camino entre " << ciudades[nodo_a] << " y " << ciudades[nodo_b] << ": " << endl;
-        while (nodo_actual != -1) {
-            cout << ciudades[nodo_actual];
-            if (nodo_actual != nodo_a) {
-                cout << " <- ";
-            }
-            nodo_actual = padres[nodo_actual];
-        }
-        cout << endl;
-    }
-
+    
     bool DFS(int nodo_actual, int nodo_destino, int aristas_actuales, int max_aristas, int padres[], bool visitados[]) {
         visitados[nodo_actual] = true;
         bool encontrado = false;
@@ -111,7 +72,7 @@ public:
             cout << endl;
         }
         else {
-            cout << "No se encontró un camino con " << max_aristas << " aristas entre " << ciudades[nodo_a] << " y " << ciudades[nodo_b] << endl;
+            cout << "No se encontrÃ³ un camino con " << max_aristas << " aristas entre " << ciudades[nodo_a] << " y " << ciudades[nodo_b] << endl;
         }
     }   
 };
@@ -135,7 +96,6 @@ int main() {
     int nodo_a = 3; 
     int nodo_b = 6; 
 
-    //g->imprimirCamino(nodo_a, nodo_b, ciudades);
 
     g->imprimirCaminoDFS(nodo_a, nodo_b, ciudades, 1); // Camino con 1 arista
     g->imprimirCaminoDFS(nodo_a, nodo_b, ciudades, 2); // Camino con 2 aristas
