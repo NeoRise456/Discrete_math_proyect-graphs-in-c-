@@ -1,4 +1,4 @@
-# Proyecto_discreta
+# Discrete_math_proyect (graphs in c++)
 
 Este código implementa un grafo mediante una matriz de adyacencia, en el que cada nodo está representado por un número del 0 al 8 y cada arista es representada por un 1 en la posición correspondiente de la matriz. Además, se implementa un algoritmo de búsqueda en profundidad (DFS) para encontrar caminos entre dos nodos del grafo.
 
